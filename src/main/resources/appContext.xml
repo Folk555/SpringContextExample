@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:player.properties"/>
+
+    <bean id="rock1" class="education.spring.Rock">
+        <constructor-arg>
+            <list>
+                <value>sysdown</value>
+                <value>hardMetal</value>
+                <value>linkin</value>
+            </list>
+        </constructor-arg>
+        <!-- collaborators and configuration for this bean go here -->
+    </bean>
+
+    <bean id="player" class="education.spring.Player">
+        <!-- collaborators and configuration for this bean go here -->
+        <!-- Задание параметров конструктора бина
+             <constructor-arg ref="rock1"/>   -->
+        <!-- Задание параметров бина через setters класса -->
+        <property name="genre" ref="rock1"/>
+
+        <property name="name" value="${player.name}"/>
+        <property name="volume" value="${player.volume}"/>
+
+    </bean>
+
+
+</beans>
