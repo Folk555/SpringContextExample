@@ -9,7 +9,11 @@
 
     <context:property-placeholder location="classpath:player.properties"/>
 
-    <bean id="rock1" class="education.spring.Rock">
+    <!--init-method="someInitForSpring" destroy-method="someDestroyForSpring"
+    необязательные методы которые вызываются до передачи бина юзеру
+    и до закрытия спринга -->
+    <bean id="rock1" class="education.spring.Rock"
+    init-method="someInitForSpring" destroy-method="someDestroyForSpring">
         <constructor-arg>
             <list>
                 <value>sysdown</value>
@@ -17,10 +21,14 @@
                 <value>linkin</value>
             </list>
         </constructor-arg>
+
         <!-- collaborators and configuration for this bean go here -->
     </bean>
 
-    <bean id="player" class="education.spring.Player">
+    <!-- scope="prototype" изменяет паттерн создания бина.
+    getBean() будет каждый раз создавать новый бин,
+    а не возвращать ссылку на существующий. -->
+    <bean id="player" class="education.spring.Player" scope="prototype">
         <!-- collaborators and configuration for this bean go here -->
         <!-- Задание параметров конструктора бина
              <constructor-arg ref="rock1"/>   -->

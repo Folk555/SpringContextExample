@@ -9,6 +9,14 @@ public class Rock extends AbstractGenre implements IGenre{
         super(str);
     }
 
+    public void someInitForSpring() {
+        System.out.println("rock inited");
+    }
+
+    public void someDestroyForSpring() {
+        System.out.println("rock destroyed");
+    }
+
     @Override
     public void playGenre() {
         System.out.println("Rock is chosen");

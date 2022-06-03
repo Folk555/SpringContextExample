@@ -15,9 +15,14 @@ public class TestSpring {
         ApplicationContext context2 = new ClassPathXmlApplicationContext("appContext.xml");
 
         Player pl = (Player) context2.getBean("player");
-        pl.play();
-        System.out.println(pl.getName());
+        pl.setVolume(10);
         System.out.println(pl.getVolume());
+        pl.play();
+
+        Player pl2 = (Player) context2.getBean("player");
+        System.out.println(pl2.getVolume());
+
+
         ((ConfigurableApplicationContext)context2).close();
     }
 }
